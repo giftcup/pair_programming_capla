@@ -6,6 +6,7 @@ int main(void)
 {
    int num_of_socks;
    int color;
+   int pairs = 0;
 
     printf("Enter number of socks in pile: ");
     scanf("%d", &num_of_socks);
@@ -23,20 +24,32 @@ int main(void)
     for (int i = 0; i < num_of_socks; i++)
     {
         scanf("%d", &color);
+        
         for (int j = 0; j <= i; j++)
         {
-            if (color != colors[j])
-                colors[j] = color;
+            if (colors[j] != color)
+            {
+                if (colors[j] == 0)
+                {
+                    colors[j] = color;
+                    color_tracker[j] = 1;
+                    break;
+                }
+            }
             else
+            {
                 color_tracker[j] += 1;
+                break;
+            }
         }
     }
 
+    //Calculating the number of pairs
     for (int i = 0; i < num_of_socks; i++)
     {
-        printf("%d %d ", colors[i], color_tracker[i]);
+        pairs += color_tracker[i] / 2;
     }
-    printf("\n");
+    printf("%d\n", pairs);
 
     return 0;
 }
