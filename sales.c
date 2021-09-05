@@ -48,7 +48,7 @@ int main(void)
     for (int i = 0; i < num_of_socks; i++)
     {
         pairs += color_tracker[i] / 2;
-    }
+    } 
     printf("%d\n", pairs);
 
     return 0;
